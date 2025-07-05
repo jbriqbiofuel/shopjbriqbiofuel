@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.Briq Biofuel - Briket & Arang Berkualitas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth; /* Menambahkan smooth scroll untuk tautan jangkar */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #FFCC00 0%, #FF8C00 100%); /* Yellow to Orange */
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .cart-notification {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.7); /* Orange pulse */
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+            }
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Tambahkan gaya untuk menyembunyikan produk tambahan secara default */
+        .hidden-product {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-gray-900 shadow-lg"> <!-- Darker navigation bar -->
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="#" class="flex items-center py-5 px-3"> <!-- Increased padding -->
+                            <img src="https://scontent.fsrg9-1.fna.fbcdn.net/v/t39.30808-6/452305668_987871203045698_526168685913638539_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeG8s4WChHn1cK5x7ogFxRvxFa7jT_XIu28VruNP9ci7bxVtJrhVLsipdJnkOyka825LuDrmVNn16_V8aF_Xbw57&_nc_ohc=u_XwF-Wxx1YQ7kNvwEK2oxQ&_nc_oc=AdniQoTc-88ZZzETRZZ1PhVyeURRKsZtKl8x-vehDdiT78movSo-OMEeewZCCsH6H-kWuFFLifpsi-zLu73vLySy&_nc_zt=23&_nc_ht=scontent.fsrg9-1.fna&_nc_gid=ZtzmHMgnS_keCRfJj0X7ZA&oh=00_AfSilNPiwvGBEBWu-HK-kGuqm8dkk07eV9gLgQJrZTEkvQ&oe=686E6D30" alt="Logo J.Briq Biofuel berupa daun dan api dalam lingkaran dengan warna hijau dan coklat" class="h-8 w-8 mr-2 rounded-full">
+                            <span class="font-semibold text-white text-2xl">J.Briq Biofuel</span> <!-- Increased font size -->
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#" class="py-5 px-3 text-yellow-400 font-semibold">Beranda</a> <!-- Increased padding -->
+                        <div class="dropdown relative">
+                            <button class="py-5 px-3 text-gray-300 hover:text-yellow-400 focus:outline-none">Produk <i class="fas fa-chevron-down ml-1 text-xs"></i></button> <!-- Increased padding -->
+                            <div class="dropdown-menu hidden absolute left-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-10"> <!-- Darker dropdown background -->
+                                <a href="#briket-bonggol-jagung" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Briket Bonggol Jagung</a>
+                                <a href="#briket-batok-kelapa" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Briket Batok Kelapa</a>
+                                <a href="#arang-kayu" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Arang Kayu</a>
+                                <a href="#paket-hemat" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Paket Hemat</a>
+                                <a href="#briket-sekam-padi" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Briket Sekam Padi</a>
+                                <a href="#arang-batok-sawit" class="block px-4 py-2 text-gray-300 hover:bg-gray-700">Arang Batok Sawit</a>
+                            </div>
+                        </div>
+                        <a href="#" class="py-5 px-3 text-gray-300 hover:text-yellow-400">Tentang Kami</a> <!-- Increased padding -->
+                        <!-- Hapus link Blog -->
+                        <a href="#contact-section" class="py-5 px-3 text-gray-300 hover:text-yellow-400">Kontak</a> <!-- Increased padding -->
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <!-- Simbol pencarian dan logo profil dihapus -->
+                    <a href="#" id="cart-button" class="relative py-3 px-3 text-gray-300 hover:text-yellow-400"> <!-- Increased padding -->
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute top-0 right-0 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center cart-notification">0</span> <!-- Orange cart notification -->
+                    </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <i class="fas fa-bars text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hidden mobile-menu bg-gray-800"> <!-- Darker mobile menu background -->
+            <ul>
+                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Beranda</a></li>
+                <li class="dropdown">
+                    <button class="block w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 text-left">Produk <i class="fas fa-chevron-down float-right mt-1"></i></button>
+                    <div class="dropdown-menu hidden">
+                        <a href="#briket-bonggol-jagung" class="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-600">Briket Bonggol Jagung</a>
+                        <a href="#briket-batok-kelapa" class="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-600">Briket Batok Kelapa</a>
+                        <a href="#arang-kayu" class="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-600">Arang Kayu</a>
+                        <a href="#paket-hemat" class="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-600">Paket Hemat</a>
+                        <a href="#briket-sekam-padi" class="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-600">Briket Sekam Padi</a>
+                        <a href="#arang-batok-sawit" class="block px-6 py-2 text-sm text-gray-300 hover:bg-gray-600">Arang Batok Sawit</a>
+                    </div>
+                </li>
+                <li><a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Tentang Kami</a></li>
+                <!-- Hapus link Blog -->
+                <li><a href="#contact-section" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Kontak</a></li>
+                <li>
+                    <div class="flex justify-end px-4 py-2"> <!-- Mengubah justify-between menjadi justify-end -->
+                        <!-- Simbol pencarian dan logo profil dihapus -->
+                        <a href="#" class="text-gray-300 hover:text-yellow-400 relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="mobile-cart-count" class="absolute top-0 right-0 bg-orange-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Bahan Bakar Ramah Lingkungan Berkualitas</h1>
+                    <p class="text-xl mb-8 opacity-90">J.Briq Biofuel menyediakan briket dan arang premium untuk kebutuhan rumah tangga dan bisnis Anda.</p>
+                    <div class="flex space-x-4">
+                        <button id="show-products-button" class="bg-white text-orange-600 font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition duration-300">Produk Kami</button> <!-- Orange text for button -->
+                        <button class="border-2 border-white font-bold py-3 px-6 rounded-full hover:bg-white hover:text-orange-600 transition duration-300" id="order-now-button">Pesan Sekarang</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://scontent.fsrg9-1.fna.fbcdn.net/v/t39.30808-6/467116241_122127974456431243_3258052364639173496_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGvDOjXdr7XpTstcoDhMh06tT6fCBomClK1Pp8IGiYKUlVOAZ0-VmKLewDY605tcuc4ecqUWM2kcdtHwA3oY1D0&_nc_ohc=NJXxyin_pQcQ7kNvwECiu6j&_nc_oc=AdmHzO-6hT6Vpng9ngQ2cvE1tp4vDG6cqUr1WAqh3PZExUj-hldgc_F6cgL2hOt5cykjYdIEZ3tZbCZrieo68E1H&_nc_zt=23&_nc_ht=scontent.fsrg9-1.fna&_nc_gid=koN9lU6scKnuDetrdsDXfg&oh=00_AfQ4CciMaW1eIXxFPh-oIsgqKqLuj4HL0u-7FR-DcX4ctw&oe=686E3AC1" alt="Produk J.Briq Biofuel yang terdiri dari briket kelapa dan arang kayu yang disusun rapi di atas meja kayu dengan background alam" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-16">Mengapa Memilih Produk Kami?</h2>
+            <div class="flex flex-wrap justify-center">
+                <div class="w-full md:w-1/3 px-6 mb-12">
+                    <div class="text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-yellow-100 p-4 rounded-full"> <!-- Yellow background for icons -->
+                                <i class="fas fa-leaf text-orange-600 text-2xl"></i> <!-- Orange icon -->
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Ramah Lingkungan</h3>
+                        <p class="text-gray-600">Terbuat dari bahan-bahan alami dengan proses produksi yang minim polusi untuk menjaga kelestarian alam.</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-6 mb-12">
+                    <div class="text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-yellow-100 p-4 rounded-full">
+                                <i class="fas fa-fire text-orange-600 text-2xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Nyala Panjang</h3>
+                        <p class="text-gray-600">Daya bakar yang lebih lama dibandingkan bahan bakar konvensional, lebih hemat dan efisien.</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-6 mb-12">
+                    <div class="text-center">
+                        <div class="flex justify-center mb-4">
+                            <div class="bg-yellow-100 p-4 rounded-full">
+                                <i class="fas fa-award text-orange-600 text-2xl"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Bersertifikat</h3>
+                        <p class="text-gray-600">Produk kami telah mendapatkan sertifikasi kualitas dari lembaga terkait</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16 bg-gray-100"> <!-- Lighter gray background -->
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Produk Unggulan Kami</h2>
+                <!-- Tambahkan ID pada tombol "Lihat Semua" -->
+                <a href="#" id="view-all-products-button" class="text-orange-600 hover:text-orange-800 font-semibold">Lihat Semua <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <!-- Tambahkan ID pada container grid produk -->
+            <div id="product-list-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div id="briket-bonggol-jagung" class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="https://scontent.fsrg9-1.fna.fbcdn.net/v/t39.30808-6/475090893_122139500036431243_5675510811623015678_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_eui2=AeGoiNJeev2XbK8j27kh-DT9Hsf5oud1BgQex_mi53UGBAKoBpOy-Pq95Px_eleKA9yIJudi5KGrRvenNCb88s_l&_nc_ohc=soPf_DmQGhEQ7kNvwHsJojG&_nc_oc=AdnTvGTx-HaH254ac4Wv7xxjm9wNwdrDrpPsRza6cIlxoAr5wHL3mb_c21nAFTVamweGl4RLLox50lO5LEIefBv2&_nc_zt=23&_nc_ht=scontent.fsrg9-1.fna&_nc_gid=E6MiOWNM1Q95u-5TDGuqTg&oh=00_AfT5U4MBm4WhB8Tq57twCJmcGw_qqjrsOTWjXaNkrB1W8g&oe=686E8790" alt="Briket Bonggol Jagung berbentuk silinder dengan dikemas dalam kardus box" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">Unggulan</div> <!-- Orange tag -->
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Briket Bonggol Jagung</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400"> <!-- Yellow stars -->
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-2">(76)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Briket berbahan bonggol jagung kering, nyala api stabil, panas tahan lama, dan minim asap</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-orange-600">Rp 12.000/kg</span> <!-- Orange price -->
+                            <button class="add-to-cart bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-full text-sm transition duration-300" data-id="1" data-name="Briket Bonggol Jagung" data-price="12000">
+                                <i class="fas fa-cart-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div id="briket-batok-kelapa" class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="https://hbnindonesia.co.id/wp-content/uploads/2021/11/attachment_1622814131_shutterstock_1657271149.jpg" alt="Briket batok kelapa berbentuk kotak, tersusun rapi, dan dikemas dalam plastik transparan" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 left-2 bg-yellow-500 text-gray-900 text-xs px-2 py-1 rounded">Terlaris</div> <!-- Yellow tag with dark text -->
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Briket Batok Kelapa</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-2">(156)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Briket berbahan tempurung kelapa pilihan, nyala api stabil, panas tinggi, tanpa bau, dan tanpa asap berlebih. </p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-orange-600">Rp 8.000/kg</span>
+                            <button class="add-to-cart bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-full text-sm transition duration-300" data-id="2" data-name="Briket Batok Kelapa" data-price="8000">
+                                <i class="fas fa-cart-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div id="arang-kayu" class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <img src="https://manfaat.co.id/wp-content/uploads/2018/05/d0dea2e3-arang-kayu.jpg" alt="Arang kayu bertekstur kasar berwarna hitam pekat dalam kemasan kertas kraft 5kg" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Arang Kayu</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-2">(245)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Arang tradisional kualitas premium, tanpa bahan kimia tambahan.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-orange-600">Rp 5.000/kg</span>
+                            <button class="add-to-cart bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-full text-sm transition duration-300" data-id="3" data-name="Arang Kayu" data-price="5000">
+                                <i class="fas fa-cart-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div id="paket-hemat" class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300">
+                    <div class="relative">
+                        <img src="https://manfaatcara.com/wp-content/uploads/2022/03/briket-1.png" alt="Paket hemat briket batok kelapa perkarung" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">Promo</div> <!-- Red for promo, can be changed to orange if preferred -->
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Paket Hemat</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-2">(152)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Paket hemat briket batok kelapa perkarung.</p>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-gray-400 text-sm line-through mr-2">Rp 200.000/25kg</span>
+                                <span class="font-bold text-orange-600">Rp 180.000/25kg</span>
+                            </div>
+                            <button class="add-to-cart bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-full text-sm transition duration-300" data-id="4" data-name="Paket Hemat" data-price="180000">
+                                <i class="fas fa-cart-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk Tambahan (Awalnya Tersembunyi) -->
+                <div id="briket-sekam-padi" class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300 hidden-product">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x200?text=Produk+5" alt="Produk Contoh 5" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">Baru</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Briket Sekam Padi</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-2">(30)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Briket inovatif dari sekam padi, ramah lingkungan dan efisien.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-orange-600">Rp 6.000/kg</span>
+                            <button class="add-to-cart bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-full text-sm transition duration-300" data-id="5" data-name="Briket Sekam Padi" data-price="6000">
+                                <i class="fas fa-cart-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="arang-batok-sawit" class="bg-white rounded-lg overflow-hidden shadow-md product-card transition duration-300 hidden-product">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/300x200?text=Produk+6" alt="Produk Contoh 6" class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded">Eco</div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-1">Arang Batok Sawit</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-xs ml-2">(90)</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">Arang premium dari batok sawit, panas tinggi dan minim abu.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-orange-600">Rp 15.000/kg</span>
+                            <button class="add-to-cart bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-full text-sm transition duration-300" data-id="6" data-name="Arang Batok Sawit" data-price="15000">
+                                <i class="fas fa-cart-plus"></i> Tambah
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Akhir Produk Tambahan -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Apa Kata Pelanggan Kami?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-100 p-6 rounded-lg"> <!-- Lighter gray background -->
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60" alt="Foto profil Pak Budi pemilik restoran berusia 45 tahun dengan senyum ramah" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Budi Santoso</h4>
+                            <p class="text-gray-600 text-sm">Pemilik Restoran</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"Sejak menggunakan briket dari J.Briq Biofuel, biaya operasional restoran saya turun 20%. Nyala api stabil dan tidak berbau, pelanggan pun lebih nyaman."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60" alt="Foto profil Ibu Siti ibu rumah tangga berusia 35 tahun mengenakan hijab" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Siti Rahayu</h4>
+                            <p class="text-gray-600 text-sm">Ibu Rumah Tangga</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-700">"Briket kelapanya tahan lama sekali, memasak sehari bisa pakai 2-3 biji saja. Tidak berasap dan lebih bersih dibanding arang biasa."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60" alt="Foto profil Bapak Agus pedagang sate dengan kumis dan topi tradisional" class="w-12 h-12 rounded-full object-cover">
+                        <div class="ml-4">
+                            <h4 class="font-semibold">Agus Salim</h4>
+                            <p class="text-gray-600 text-sm">Pedagang Sate</p>
+                        </div>
+                    </div>
+                    <div class="flex text-yellow-400 mb-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700">"Arang kayunya bagus, panasnya stabil membikin sate cepat matang tapi tidak gosong. Pelanggan saya suka karena sate lebih wangi dan enak."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-orange-600 text-white"> <!-- Orange CTA background -->
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Siap Beralih ke Bahan Bakar Ramah Lingkungan?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Bergabunglah dengan ribuan pelanggan puas yang telah merasakan kualitas produk J.Briq Biofuel.</p>
+            <button class="bg-white text-orange-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition duration-300" id="cta-order-now-button">Pesan Sekarang</button>
+        </div>
+    </section>
+
+    <!-- Contact Section (New Section) -->
+    <section id="contact-section" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Hubungi Kami</h2>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Informasi Kontak</h3>
+                        <ul class="text-gray-700 space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-orange-600 mt-1 mr-3"></i>
+                                <span>Gg. Taman Sari I No.13-a, Sekaran, Kec. Gn. Pati, Kota Semarang, Jawa Tengah 50229</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-phone-alt text-orange-600 mr-3"></i>
+                                <span>+62 895-4247-56600</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-envelope text-orange-600 mr-3"></i>
+                                <span>jbriqbiofuel@gmail.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-whatsapp text-orange-600 mr-3"></i>
+                                <a href="http://wa.me/+62895424756600" target="_blank" class="text-blue-600 hover:underline">+62 895-4247-56600</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-instagram text-orange-600 mr-3"></i>
+                                <a href="https://www.instagram.com/j.briqbiofuel_" target="_blank" class="text-blue-600 hover:underline">@j.briqbiofuel_</a>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fab fa-facebook-f text-orange-600 mr-3"></i>
+                                <a href="https://web.facebook.com/j.briq.biofuel" target="_blank" class="text-blue-600 hover:underline">J.Briq Biofuel</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 px-4">
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Kirim Pesan kepada Kami</h3>
+                        <form action="#" method="POST" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700">Subjek</label>
+                                <input type="text" id="subject" name="subject" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700">Pesan Anda</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6"> <!-- Darker footer background -->
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Tentang J.Briq Biofuel</h3>
+                    <p class="text-gray-400 mb-4">Perusahaan yang berkomitmen menyediakan bahan bakar ramah lingkungan berkualitas tinggi untuk kebutuhan rumah tangga dan bisnis.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/j.briq.biofuel" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/j.briqbiofuel_" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-instagram"></i></a>
+                        <a href="http://wa.me/+62895424756600" class="text-gray-400 hover:text-yellow-400"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Tautan Cepat</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-yellow-400">Beranda</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-yellow-400">Produk</a></li>
+                        <li class="mb-2"><a href="#" class="text-gray-400 hover:text-yellow-400">Tentang Kami</a></li>
+                        <!-- Hapus link Blog -->
+                        <li class="mb-2"><a href="#contact-section" class="text-gray-400 hover:text-yellow-400">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Products -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Produk</h3>
+                    <ul>
+                        <li class="mb-2"><a href="#briket-bonggol-jagung" class="text-gray-400 hover:text-yellow-400">Briket Bonggol Jagung</a></li>
+                        <li class="mb-2"><a href="#briket-batok-kelapa" class="text-gray-400 hover:text-yellow-400">Briket Batok Kelapa</a></li>
+                        <li class="mb-2"><a href="#arang-kayu" class="text-gray-400 hover:text-yellow-400">Arang Kayu</a></li>
+                        <li class="mb-2"><a href="#paket-hemat" class="text-gray-400 hover:text-yellow-400">Paket Hemat</a></li>
+                        <li class="mb-2"><a href="#briket-sekam-padi" class="text-gray-400 hover:text-yellow-400">Briket Sekam Padi</a></li>
+                        <li class="mb-2"><a href="#arang-batok-sawit" class="text-gray-400 hover:text-yellow-400">Arang Batok Sawit</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Hubungi Kami</h3>
+                    <ul class="text-gray-400">
+                        <li class="mb-2 flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+                            <span>Gg. Taman Sari I No.13-a, Sekaran, Kec. Gn. Pati, Kota Semarang, Jawa Tengah 50229</span>
+                        </li>
+                        <li class="mb-2 flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <span>+62 895-4247-56600</span>
+                        </li>
+                        <li class="mb-2 flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>jbriqbiofuel@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 J.Briq Biofuel. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 text-sm">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Keranjang Belanja</h3>
+                    <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-items" class="mb-4">
+                    <!-- Cart items will be added here dynamically -->
+                    <p id="empty-cart-message" class="text-center py-10 text-gray-500">Keranjang belanja Anda kosong</p>
+                </div>
+                
+                <div class="border-t border-gray-200 pt-4 mb-4">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Subtotal:</span>
+                        <span id="cart-subtotal">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-semibold">Ongkir:</span>
+                        <span id="cart-shipping">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold">
+                        <span>Total:</span>
+                        <span id="cart-total">Rp 0</span>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button id="continue-shopping" class="flex-1 py-2 border border-gray-300 rounded-md hover:bg-gray-50 transition duration-300">Lanjut Belanja</button>
+                    <button id="checkout-button" class="flex-1 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition duration-300">Checkout</button> <!-- Orange checkout button -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold text-gray-800">Formulir Checkout</h3>
+                    <button id="close-checkout" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="checkout-form" class="space-y-4">
+                    <div>
+                        <label for="customer-name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                        <input type="text" id="customer-name" name="customer-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required>
+                    </div>
+                    <div>
+                        <label for="customer-phone" class="block text-sm font-medium text-gray-700">Nomor HP (WhatsApp)</label>
+                        <input type="tel" id="customer-phone" name="customer-phone" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required>
+                    </div>
+                    <div>
+                        <label for="customer-address" class="block text-sm font-medium text-gray-700">Alamat Lengkap</label>
+                        <textarea id="customer-address" name="customer-address" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm" required></textarea>
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-4">
+                        <h4 class="font-semibold text-lg mb-2">Ringkasan Pesanan</h4>
+                        <div class="flex justify-between mb-1">
+                            <span>Subtotal:</span>
+                            <span id="checkout-subtotal">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between mb-1">
+                            <span>Ongkir:</span>
+                            <span id="checkout-shipping">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-bold">
+                            <span>Total:</span>
+                            <span id="checkout-total">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 pt-4">
+                        <h4 class="font-semibold text-lg mb-2">Metode Pembayaran</h4>
+                        <p class="text-gray-700 text-sm mb-2">Silakan lakukan pembayaran melalui transfer bank ke rekening berikut:</p>
+                        <p class="font-bold text-gray-800">Bank BRI: 1270 0102 0843 501 (a.n. Ihda Mustofa Ahyaar)</p>
+                        <p class="font-bold text-gray-800">Bank Mandiri: 1390028533341 (a.n. J.Briq Biofuel)</p>
+                        <p class="text-gray-700 text-sm mt-2">Setelah transfer, mohon konfirmasi pembayaran Anda.</p>
+                    </div>
+
+                    <button type="submit" class="w-full py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition duration-300">Konfirmasi Pesanan & Pembayaran</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product List Modal -->
+    <div id="product-list-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-gray-800">Produk Kami</h3>
+                    <button id="close-product-list-modal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="modal-product-list">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Dropdown menu functionality
+        document.querySelectorAll('.dropdown button').forEach(button => {
+            button.addEventListener('click', () => {
+                const dropdown = button.closest('.dropdown');
+                const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                dropdownMenu.classList.toggle('hidden');
+            });
+        });
+        
+        // Cart functionality
+        let cart = [];
+        
+        // Add to cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCartCount();
+                updateCartModal();
+                
+                // Show notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed bottom-4 right-4 bg-orange-500 text-white px-4 py-2 rounded-md shadow-lg transition-opacity duration-300'; // Orange notification
+                notification.textContent = `${name} ditambahkan ke keranjang`;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 2000);
+            });
+        });
+        
+        // Update cart count
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+            document.getElementById('mobile-cart-count').textContent = totalItems;
+            
+            if (totalItems > 0) {
+                document.getElementById('cart-count').classList.add('cart-notification');
+                document.getElementById('mobile-cart-count').classList.add('cart-notification');
+            } else {
+                document.getElementById('cart-count').classList.remove('cart-notification');
+                document.getElementById('mobile-cart-count').classList.remove('cart-notification');
+            }
+        }
+        
+        // Update cart modal
+        function updateCartModal() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p id="empty-cart-message" class="text-center py-10 text-gray-500">Keranjang belanja Anda kosong</p>';
+            } else {
+                cartItemsContainer.innerHTML = '';
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex justify-between items-center py-3 border-b border-gray-100';
+                    itemElement.innerHTML = `
+                        <div>
+                            <h4 class="font-medium">${item.name}</h4>
+                            <div class="flex items-center mt-1">
+                                <button class="decrease-quantity text-gray-500 hover:text-orange-600" data-id="${item.id}"> <!-- Orange hover for quantity buttons -->
+                                    <i class="fas fa-minus-circle"></i>
+                                </button>
+                                <span class="mx-2">${item.quantity}</span>
+                                <button class="increase-quantity text-gray-500 hover:text-orange-600" data-id="${item.id}">
+                                    <i class="fas fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-medium">Rp ${(item.price * item.quantity).toLocaleString('id-ID')}</div>
+                            <button class="remove-item text-red-500 text-sm hover:text-red-700 mt-1" data-id="${item.id}">Hapus</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+            }
+            
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 0 ? 15000 : 0;
+            const total = subtotal + shipping;
+            
+            document.getElementById('cart-subtotal').textContent = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('cart-shipping').textContent = `Rp ${shipping.toLocaleString('id-ID')}`;
+            document.getElementById('cart-total').textContent = `Rp ${total.toLocaleString('id-ID')}`;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    if (item) {
+                        item.quantity += 1;
+                        updateCartModal();
+                        updateCartCount();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    if (item && item.quantity > 1) {
+                        item.quantity -= 1;
+                        updateCartModal();
+                        updateCartCount();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.getAttribute('data-id');
+                    cart = cart.filter(item => item.id !== id);
+                    updateCartModal();
+                    updateCartCount();
+                });
+            });
+        }
+        
+        // Cart modal toggle
+        const cartButton = document.getElementById('cart-button');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCartButton = document.getElementById('close-cart');
+        const continueShoppingButton = document.getElementById('continue-shopping');
+        const checkoutButton = document.getElementById('checkout-button');
+        
+        cartButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeCartButton.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        continueShoppingButton.addEventListener('click', () => {
+            cartModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Checkout modal functionality
+        const checkoutModal = document.getElementById('checkout-modal');
+        const closeCheckoutButton = document.getElementById('close-checkout');
+        const checkoutForm = document.getElementById('checkout-form');
+
+        checkoutButton.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Keranjang belanja Anda kosong. Silakan tambahkan produk terlebih dahulu.');
+                return;
+            }
+            // Populate checkout summary
+            document.getElementById('checkout-subtotal').textContent = document.getElementById('cart-subtotal').textContent;
+            document.getElementById('checkout-shipping').textContent = document.getElementById('cart-shipping').textContent;
+            document.getElementById('checkout-total').textContent = document.getElementById('cart-total').textContent;
+
+            cartModal.classList.add('hidden'); // Hide cart modal
+            checkoutModal.classList.remove('hidden'); // Show checkout modal
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeCheckoutButton.addEventListener('click', () => {
+            checkoutModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const customerName = document.getElementById('customer-name').value;
+            const customerPhone = document.getElementById('customer-phone').value;
+            const customerAddress = document.getElementById('customer-address').value;
+            const totalAmount = document.getElementById('checkout-total').textContent;
+
+            let orderDetails = "Detail Pesanan:\n";
+            cart.forEach(item => {
+                orderDetails += `- ${item.name} (${item.quantity}x) - Rp ${(item.price * item.quantity).toLocaleString('id-ID')}\n`;
+            });
+            orderDetails += `\nSubtotal: ${document.getElementById('checkout-subtotal').textContent}\n`;
+            orderDetails += `Ongkir: ${document.getElementById('checkout-shipping').textContent}\n`;
+            orderDetails += `Total: ${totalAmount}\n\n`;
+            orderDetails += `Nama: ${customerName}\n`;
+            orderDetails += `Nomor HP: ${customerPhone}\n`;
+            orderDetails += `Alamat: ${customerAddress}\n\n`;
+            orderDetails += `Mohon lakukan pembayaran ke rekening BCA: 1234567890 atau Mandiri: 0987654321. Setelah transfer, pesanan Anda akan diproses.`;
+
+            // Construct WhatsApp message
+            const whatsappMessage = encodeURIComponent(orderDetails);
+            const whatsappNumber = "+62895424756600"; // Replace with your WhatsApp number
+            const whatsappURL = `https://wa.me/${+62895424756600}?text=${whatsappMessage}`;
+
+            alert('Terima kasih atas pesanan Anda! Anda akan diarahkan ke WhatsApp untuk konfirmasi pembayaran.');
+            window.open(whatsappURL, '_blank');
+
+            // Clear cart and close modals
+            cart = [];
+            updateCartCount();
+            updateCartModal();
+            checkoutModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            checkoutForm.reset(); // Clear form fields
+        });
+        
+        // Close cart modal when clicking outside
+        cartModal.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close checkout modal when clicking outside
+        checkoutModal.addEventListener('click', (e) => {
+            if (e.target === checkoutModal) {
+                checkoutModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // --- START: Penambahan Kode untuk "Lihat Semua Produk" ---
+
+        // Fungsionalitas "Lihat Semua Produk"
+        const viewAllProductsButton = document.getElementById('view-all-products-button');
+        const productListContainer = document.getElementById('product-list-container');
+
+        // Ambil semua produk yang memiliki kelas 'hidden-product'
+        const hiddenProducts = document.querySelectorAll('.hidden-product');
+
+        // Fungsi untuk menampilkan semua produk
+        function showAllProducts() {
+            hiddenProducts.forEach(product => {
+                product.classList.remove('hidden-product'); // Hapus kelas yang menyembunyikan produk
+                // Karena kita menggunakan grid, display: block akan bekerja dengan baik
+                // Jika Anda memiliki layout yang lebih kompleks, Anda mungkin perlu mengatur display ke 'grid-item' atau 'flex-item'
+                product.style.display = 'block'; 
+            });
+            // Sembunyikan tombol "Lihat Semua" setelah semua produk ditampilkan
+            if (viewAllProductsButton) {
+                viewAllProductsButton.style.display = 'none'; 
+            }
+        }
+
+        // Tambahkan event listener ke tombol "Lihat Semua"
+        if (viewAllProductsButton) {
+            viewAllProductsButton.addEventListener('click', (e) => {
+                e.preventDefault(); // Mencegah default behavior link (scroll ke atas)
+                showAllProducts();
+            });
+        }
+
+        // Sembunyikan produk tambahan secara default saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            hiddenProducts.forEach(product => {
+                product.style.display = 'none'; // Sembunyikan produk tambahan secara default
+            });
+
+            // Event listener untuk tombol "Pesan Sekarang" di Hero Section
+            const orderNowButtonHero = document.getElementById('order-now-button');
+            if (orderNowButtonHero) {
+                orderNowButtonHero.addEventListener('click', () => {
+                    cartModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Event listener untuk tombol "Pesan Sekarang" di CTA Section
+            const ctaOrderNowButton = document.getElementById('cta-order-now-button');
+            if (ctaOrderNowButton) {
+                ctaOrderNowButton.addEventListener('click', () => {
+                    cartModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+        });
+
+        // --- END: Penambahan Kode untuk "Lihat Semua Produk" ---
+
+        // --- START: Penambahan Kode untuk Modal Produk ---
+
+        const showProductsButton = document.getElementById('show-products-button');
+        const productListModal = document.getElementById('product-list-modal');
+        const closeProductListModalButton = document.getElementById('close-product-list-modal');
+        const modalProductListContainer = document.getElementById('modal-product-list');
+
+        // Data produk (bisa diambil dari array produk yang sudah ada atau dibuat terpisah)
+        // Mengambil data dari produk yang sudah ada di halaman
+        const productsData = [
+            {
+                id: "briket-bonggol-jagung",
+                name: "Briket Bonggol Jagung",
+                price: "Rp 12.000/kg",
+                description: "Briket berbahan bonggol jagung kering, nyala api stabil, panas tahan lama, dan minim asap.",
+                image: "https://scontent.fsrg9-1.fna.fbcdn.net/v/t39.30808-6/475090893_122139500036431243_5675510811623015678_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=aa7b47&_nc_eui2=AeGoiNJeev2XbK8j27kh-DT9Hsf5oud1BgQex_mi53UGBAKoBpOy-Pq95Px_eleKA9yIJudi5KGrRvenNCb88s_l&_nc_ohc=soPf_DmQGhEQ7kNvwHsJojG&_nc_oc=AdnTvGTx-HaH254ac4Wv7xxjm9wNwdrDrpPsRza6cIlxoAr5wHL3mb_c21nAFTVamweGl4RLLox50lO5LEIefBv2&_nc_zt=23&_nc_ht=scontent.fsrg9-1.fna&_nc_gid=E6MiOWNM1Q95u-5TDGuqTg&oh=00_AfT5U4MBm4WhB8Tq57twCJmcGw_qqjrsOTWjXaNkrB1W8g&oe=686E8790"
+            },
+            {
+                id: "briket-batok-kelapa",
+                name: "Briket Batok Kelapa",
+                price: "Rp 8.000/kg",
+                description: "Briket berbahan tempurung kelapa pilihan, nyala api stabil, panas tinggi, tanpa bau, dan tanpa asap berlebih.",
+                image: "https://hbnindonesia.co.id/wp-content/uploads/2021/11/attachment_1622814131_shutterstock_1657271149.jpg"
+            },
+            {
+                id: "arang-kayu",
+                name: "Arang Kayu",
+                price: "Rp 5.000/kg",
+                description: "Arang tradisional kualitas premium, tanpa bahan kimia tambahan.",
+                image: "https://manfaat.co.id/wp-content/uploads/2018/05/d0dea2e3-arang-kayu.jpg"
+            },
+            {
+                id: "paket-hemat",
+                name: "Paket Hemat",
+                price: "Rp 180.000/25kg",
+                description: "Paket hemat briket batok kelapa perkarung.",
+                image: "https://manfaatcara.com/wp-content/uploads/2022/03/briket-1.png"
+            },
+            {
+                id: "briket-sekam-padi",
+                name: "Briket Sekam Padi",
+                price: "Rp 6.000/kg",
+                description: "Briket inovatif dari sekam padi, ramah lingkungan dan efisien.",
+                image: "https://via.placeholder.com/300x200?text=Briket+Sekam+Padi" // Placeholder image
+            },
+            {
+                id: "arang-batok-sawit",
+                name: "Arang Batok Sawit",
+                price: "Rp 15.000/kg",
+                description: "Arang premium dari batok sawit, panas tinggi dan minim abu.",
+                image: "https://via.placeholder.com/300x200?text=Arang+Batok+Sawit" // Placeholder image
+            }
+        ];
+
+        function populateProductListModal() {
+            modalProductListContainer.innerHTML = ''; // Clear previous content
+            productsData.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-gray-50 p-4 rounded-lg shadow-sm flex flex-col md:flex-row items-center';
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="w-24 h-24 object-cover rounded-lg mb-4 md:mb-0 md:mr-4">
+                    <div class="text-center md:text-left">
+                        <h4 class="font-semibold text-lg mb-1">${product.name}</h4>
+                        <p class="text-gray-700 text-sm mb-2">${product.description}</p>
+                        <span class="font-bold text-orange-600">${product.price}</span>
+                    </div>
+                `;
+                modalProductListContainer.appendChild(productCard);
+            });
+        }
+
+        showProductsButton.addEventListener('click', () => {
+            populateProductListModal(); // Populate modal with products
+            productListModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeProductListModalButton.addEventListener('click', () => {
+            productListModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        productListModal.addEventListener('click', (e) => {
+            if (e.target === productListModal) {
+                productListModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // --- END: Penambahan Kode untuk Modal Produk ---
+    </script>
+</body>
+</html>
